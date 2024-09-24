@@ -36,8 +36,8 @@ public class LibraryHandlerImpl extends LibraryHandler {
 	}
 
 	@Override
-	public Boolean addBooks(Library library, List<Book> books) {
-		library.addBookToCatalog(books);
+	public Boolean addBooks(Library library) {
+		library.addBookToCatalog();
 		return true;
 	}
 
@@ -150,6 +150,21 @@ public class LibraryHandlerImpl extends LibraryHandler {
 			}
 		}		
 		return userRented;
+	}
+
+	@Override
+	public void updateBookById(Long id, Library library) {
+		library.updateBook(id);		
+	}
+
+	@Override
+	public void deleteBookById(Long id, Library library) {
+		library.deleteBookById(id);		
+	}
+
+	@Override
+	public void showUsers(Library library) {
+		library.showUsers();		
 	}
 
 }

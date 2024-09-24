@@ -1,7 +1,6 @@
 package Entities;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 
 public class Book extends BaseModel {
@@ -26,6 +25,30 @@ public class Book extends BaseModel {
 	}
 
 	private Integer quantity;
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public void setAuthor(List<String> author) {
+		this.author = author;
+	}
+
+	public void setIsbn(String isbn) {
+		this.isbn = isbn;
+	}
+
+	public void setPublisher(String publisher) {
+		this.publisher = publisher;
+	}
+
+	public void setPublishDate(LocalDate publishDate) {
+		this.publishDate = publishDate;
+	}
+
+	public void setQuantity(Integer quantity) {
+		this.quantity = quantity;
+	}
 
 	public String getTitle() {
         return title;

@@ -38,9 +38,12 @@ public abstract class LibraryHandler {
 	public abstract void showCatalog(Library library, User user);
 	public abstract void showCatalog(Library library);
 	public abstract Book searchBook(String search);
-	public abstract Boolean addBooks(Library library, List<Book> books);
+	public abstract Boolean addBooks(Library library);
 	public abstract HashMap<Book, String> rentBook(Library library, User user,  List<Long> ids);
 	public abstract void showRented(Library library, User librarian);
 	public abstract void returnBook(Library library, User user, List<Long> ids);
 	public abstract List<Book> rentedByUser(Library library, User user);
+	public abstract void updateBookById(Long id, Library library);
+	public abstract void deleteBookById(Long id, Library library);
+	public abstract void showUsers(Library bookstore);
 }
