@@ -38,6 +38,9 @@ public class Book extends BaseModel {
     public BookStatus getStatus() {
         return status;
     }
+    public void setStatus(BookStatus status) {
+    	this.status = status;
+    }
 
     public String getIsbn() {
         return isbn;
@@ -57,12 +60,24 @@ public class Book extends BaseModel {
 	
 	@Override
 	public String toString() {
-		return "Informações do Livro " + title + '\n' +
-                "Autores: " + String.join(", ", author) + '\n' +
-                "Status: " + status + '\n' +
-                "Isbn: '" + isbn + '\n' +
-                "Editora: " + publisher + '\n' +
-                "Data de publicação: " + publishDate;
+		return title + " (" + status +") | ID: " + this.getId() + '\n' +
+                "\tAutores: " + String.join(", ", author) + '\n' +
+                "\tIsbn: " + isbn + '\n' +
+                "\tEditora: " + publisher + '\n' +
+                "\tData de publicação: " + publishDate;
 	}
+	
+	public String toUserString() {
+		return title + "\n" +
+                "\tAutores: " + String.join(", ", author) + '\n' +
+                "\tIsbn: " + isbn + '\n' +
+                "\tEditora: " + publisher + '\n' +
+                "\tData de publicação: " + publishDate;
+	}
+	
+	public String toSimpleString() {
+		return title + " | ID: " + this.getId();
+	}
+	
 
 }

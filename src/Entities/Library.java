@@ -1,13 +1,24 @@
 package Entities;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Library {
 	
 	private List<Book> catalog;
 	private List<User> users;
+	private HashMap<Book, List<User>> rented = new HashMap<Book, List<User>>();
 	
+	public HashMap<Book, List<User>> getRented() {
+		return rented;
+	}
+
+	public void setRented(HashMap<Book, List<User>> rented) {
+		this.rented = rented;
+	}
+
 	public List<Book> getCatalog() {
 		return catalog;
 	}
@@ -31,6 +42,12 @@ public class Library {
 	
 	public void addBookToCatalog(Book book) {
 		catalog.add(book);
+	}
+	
+	public void addBookToCatalog(List<Book> books) {
+		for(Book book : books) {
+			catalog.add(book);			
+		}
 	}
 	
 	public void registerUser(User user) {

@@ -1,7 +1,11 @@
 package Entities;
 
-public class User {
-   
+import java.util.Objects;
+
+public class User {  
+	
+
+	
 	private String email;
     private String name;
     private String password;
@@ -39,4 +43,18 @@ public class User {
     public boolean authenticate(String email, String password) {
         return this.email.equals(email) && this.password.equals(password);
     }
+    
+    @Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		User other = (User) obj;
+		return Objects.equals(email, other.email) && Objects.equals(name, other.name)
+				&& Objects.equals(password, other.password);
+	}
+
 }
