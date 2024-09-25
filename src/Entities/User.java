@@ -2,7 +2,7 @@ package Entities;
 
 import java.util.Objects;
 
-public class User {  
+public class User extends BaseModel {  
 	
 
 	

@@ -45,6 +45,10 @@ public class LibraryHandlerImpl extends LibraryHandler {
 	public void searchBook(Library library, User user) {
 		library.searchBookTitle(user);
 	}
+	@Override
+	public void searchUser(Library library) {
+		library.searchUserName();
+	}
 
 	public Book searchBook(Library library, Long id) {
 		for (Book book : library.getCatalog()) {
@@ -165,5 +169,12 @@ public class LibraryHandlerImpl extends LibraryHandler {
 	public void showUsers(Library library) {
 		library.showUsers();		
 	}
+
+	@Override
+	public void deleteUserById(Long id, Library library) {
+		library.deleteUserById(id);
+	}
+
+
 
 }

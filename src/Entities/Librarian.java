@@ -22,6 +22,8 @@ public class Librarian extends User {
 
     @Override
     public String toString() {
-        return "Bibliotecário: " + getName() + ", Email: " + getEmail() + ", CPF: " + cpf;
+        return "[ID: " + getId() + "]" +
+        		" Bibliotecário: " + getName() +
+        		", Email: " + getEmail() + ", CPF: " + cpf;
     }
 }

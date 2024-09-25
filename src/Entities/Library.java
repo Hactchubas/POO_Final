@@ -79,6 +79,7 @@ public class Library {
 
         if (!found) {
             System.err.println("Livro não encontrado \n \n");
+            
         }
     }
 	
@@ -164,5 +165,43 @@ public class Library {
 			System.err.println(user.toString());
 		}
 	}
+	
+	public void searchUserName() {
+		System.out.println("Digite o nome do usuário: ");
+        String search = scanner.nextLine();
+        
+        boolean found = false;
+        
+        for(User user : getUsers()) {
+        	if(user.getName().equalsIgnoreCase(search)) {
+                System.out.println(user.toString() + "\n");
+                found = true;
+        	}
+        }
+        
+        if (!found) {
+            System.err.println("Usuário não encontrado \n \n");
+            
+        }
+	}
+	
+	public User searchUserById(long id) {
+        Optional<User> userOptional = users.stream()
+                .filter(user -> user.getId() == id)
+                .findFirst();
+        
+        return userOptional.orElse(null);
+    }
+	
+    public void deleteUserById(long id) {
+        User user = searchUserById(id);
+
+        if (user != null) {
+            users.remove(user);
+            System.out.println("Usuário com ID " + id + " foi deletado com sucesso.");
+        } else {
+            System.out.println("Usuário não encontrado com o ID: " + id);
+        }
+    }
 	
 }

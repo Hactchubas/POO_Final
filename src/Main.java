@@ -299,7 +299,7 @@ public class Main {
 						break;
 					case 12:
 						if(logged instanceof Librarian) {
-							deleteUser(bookstore, libraryManager);
+							deleteUser(scanner, bookstore, libraryManager);
 						}
 						break;
 					case 13:
@@ -317,8 +317,10 @@ public class Main {
 		scanner.close();
 	}
 	
-	private static void deleteUser(Library bookstore, LibraryHandler libraryManager) {
-		// TODO Auto-generated method stub
+	private static void deleteUser(Scanner scanner, Library bookstore, LibraryHandler libraryManager) {
+		System.out.println("Digite o ID do usuário que deseja deletar: ");
+		Long id = scanner.nextLong();
+		libraryManager.deleteUserById(id, bookstore);
 		
 	}
 
@@ -328,8 +330,7 @@ public class Main {
 	}
 
 	private static void searchUser(Library bookstore, LibraryHandler libraryManager) {
-		// TODO Auto-generated method stub
-		
+		libraryManager.searchUser(bookstore);
 	}
 	
 	private static void searchBook(Library bookstore, LibraryHandler libraryManager, User user) {

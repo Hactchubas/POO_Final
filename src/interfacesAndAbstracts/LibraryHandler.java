@@ -38,6 +38,7 @@ public abstract class LibraryHandler {
 	public abstract void showCatalog(Library library, User user);
 	public abstract void showCatalog(Library library);
 	public abstract void searchBook(Library library, User user);
+	public abstract void searchUser(Library library);
 	public abstract Boolean addBooks(Library library);
 	public abstract HashMap<Book, String> rentBook(Library library, User user,  List<Long> ids);
 	public abstract void showRented(Library library, User librarian);
@@ -46,4 +47,5 @@ public abstract class LibraryHandler {
 	public abstract void updateBookById(Long id, Library library);
 	public abstract void deleteBookById(Long id, Library library);
 	public abstract void showUsers(Library bookstore);
+	public abstract void deleteUserById(Long id, Library library); 
 }
