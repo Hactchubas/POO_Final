@@ -183,9 +183,12 @@ public class Main {
 		Scanner scanner = new Scanner(System.in);
 		LibraryHandler libraryManager = new LibraryHandlerImpl();
 
-
 		bookstore.registerUser(new Student("kaua", "Kaua", "1234", "S123"));
 		bookstore.registerUser(new Librarian("kauaAdm", "Kaua - Adm", "1234", "1234"));
+		
+		for(Book book: libraryManager.getSampleBooks()) {
+            bookstore.getCatalog().add(book);
+        }
 		
 		Boolean running = true;
 		while (running) {
@@ -256,6 +259,9 @@ public class Main {
 					case 3:
 						returnBook(scanner, bookstore, libraryManager);
 						break;
+					case 4:
+                        searchBook(bookstore, libraryManager, logged);
+                        break;
 					case 5:
 						if(logged instanceof Librarian) {
 							addBook(scanner, bookstore, libraryManager);
@@ -325,6 +331,10 @@ public class Main {
 		// TODO Auto-generated method stub
 		
 	}
+	
+	private static void searchBook(Library bookstore, LibraryHandler libraryManager, User user) {
+        libraryManager.searchBook(bookstore, user);
+    }
 
 	private static void listUsers(Library bookstore, LibraryHandler libraryManager) {
 		System.out.println("Lista de usuários cadastrados: ");

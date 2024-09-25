@@ -37,7 +37,7 @@ public abstract class LibraryHandler {
 	
 	public abstract void showCatalog(Library library, User user);
 	public abstract void showCatalog(Library library);
-	public abstract Book searchBook(String search);
+	public abstract void searchBook(Library library, User user);
 	public abstract Boolean addBooks(Library library);
 	public abstract HashMap<Book, String> rentBook(Library library, User user,  List<Long> ids);
 	public abstract void showRented(Library library, User librarian);

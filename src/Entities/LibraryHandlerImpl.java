@@ -42,9 +42,8 @@ public class LibraryHandlerImpl extends LibraryHandler {
 	}
 
 	@Override
-	public Book searchBook(String search) {
-		// TODO Auto-generated method stub
-		return null;
+	public void searchBook(Library library, User user) {
+		library.searchBookTitle(user);
 	}
 
 	public Book searchBook(Library library, Long id) {

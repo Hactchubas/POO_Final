@@ -59,6 +59,29 @@ public class Library {
         return bookOptional.orElse(null);
     }
 	
+	public void searchBookTitle(User user) {
+        System.out.println("Digite o nome do livro: ");
+        String search = scanner.nextLine();
+
+        boolean found = false;
+
+        for (Book book : getCatalog()) {
+            if (book.getTitle().equalsIgnoreCase(search)) {
+                if (user instanceof Librarian) {
+                    System.out.println(book.toString() + "\n");
+                    found = true;
+                } else {
+                    System.out.println(book.toUserString() + "\n");
+                    found = true;
+                }
+            }
+        }
+
+        if (!found) {
+            System.err.println("Livro não encontrado \n \n");
+        }
+    }
+	
     public void viewBookDetailsById(long id) {
     	Book book = searchBookById(id);
 
@@ -109,9 +132,7 @@ public class Library {
         String authorsInput = scanner.nextLine();
         List<String> authors = Arrays.asList(authorsInput.split("\\s*,\\s*"));
 
-        System.out.println("Digite o status do livro (DISPONIVEL, INDISPONIVEL): ");
-        String statusInput = scanner.nextLine();
-        BookStatus status = BookStatus.valueOf(statusInput.toUpperCase());
+        BookStatus status = InputHandler.getEnumInput("Digite o status do livro (DISPONIVEL, INDISPONIVEL): ");
 
         System.out.println("Digite o ISBN do livro: ");
         String isbn = scanner.nextLine();
@@ -119,13 +140,9 @@ public class Library {
         System.out.println("Digite o nome da editora: ");
         String publisher = scanner.nextLine();
 
-        System.out.println("Digite a data de publicação (formato AAAA-MM-DD): ");
-        String publishDateInput = scanner.nextLine();
-        LocalDate publishDate = LocalDate.parse(publishDateInput);
-
-        System.out.println("Digite a quantidade de cópias do livro: ");
-        int quantity = scanner.nextInt();
-        scanner.nextLine();
+        LocalDate publishDate = InputHandler.getDateInput("Digite a data de publicação (formato AAAA-MM-DD): ");
+        
+        int quantity = InputHandler.getIntInput("Digite a quantidade de cópias do livro: ");
 
         return new Book(title, authors, status, isbn, publisher, publishDate, quantity);
     }
