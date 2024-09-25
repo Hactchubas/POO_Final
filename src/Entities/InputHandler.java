@@ -19,7 +19,6 @@ public class InputHandler {
                 validInput = true;
             } catch (Exception e) {
                 System.out.println("Entrada inválida. Por favor, insira um número inteiro.");
-                scanner.nextLine();
             }
         }
         return value;
@@ -36,7 +35,6 @@ public class InputHandler {
                 validInput = true;
             } catch (InputMismatchException e) {
                 System.out.println("Entrada inválida. Por favor, insira um número válido.");
-                scanner.nextLine();
             }
         }
         return value;

@@ -183,8 +183,8 @@ public class Main {
 		Scanner scanner = new Scanner(System.in);
 		LibraryHandler libraryManager = new LibraryHandlerImpl();
 
-		bookstore.registerUser(new Student("kaua", "Kaua", "1234", "S123"));
-		bookstore.registerUser(new Librarian("kauaAdm", "Kaua - Adm", "1234", "1234"));
+		bookstore.registerUser(new Student("alicemedeiros@alu.uf.br", "Alice Medeiros", "1234", "S123"));
+		bookstore.registerUser(new Librarian("josefarias@serv.uf.br", "José Farias", "5678", "12345978900"));
 		
 		for(Book book: libraryManager.getSampleBooks()) {
             bookstore.getCatalog().add(book);
@@ -210,11 +210,10 @@ public class Main {
 					System.out.println("8. Listar Alugados");
 					System.out.println("9. Buscar usuário");
 					System.out.println("10. Listar usuários");
-					System.out.println("11. Atualizar usuário");
-					System.out.println("12. Deletar usuário");
+					System.out.println("11. Deletar usuário");
 				}
 
-				System.out.println("13. Deslogar");
+				System.out.println("12. Deslogar");
 
 			}
 			System.out.println("0. Sair");
@@ -294,15 +293,10 @@ public class Main {
 						break;
 					case 11:
 						if(logged instanceof Librarian) {
-							updateUser(bookstore, libraryManager);
-						}
-						break;
-					case 12:
-						if(logged instanceof Librarian) {
 							deleteUser(scanner, bookstore, libraryManager);
 						}
 						break;
-					case 13:
+					case 12:
 						logged = null;
 						break;
 					case 0:
@@ -321,11 +315,6 @@ public class Main {
 		System.out.println("Digite o ID do usuário que deseja deletar: ");
 		Long id = scanner.nextLong();
 		libraryManager.deleteUserById(id, bookstore);
-		
-	}
-
-	private static void updateUser(Library bookstore, LibraryHandler libraryManager) {
-		// TODO Auto-generated method stub
 		
 	}
 

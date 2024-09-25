@@ -14,6 +14,7 @@ public class Library {
 	private List<User> users;
 	private Scanner scanner;
 	private HashMap<Book, List<User>> rented = new HashMap<Book, List<User>>();
+	private List<Category> existingCategories = new ArrayList<>();
 	
 	public HashMap<Book, List<User>> getRented() {
 		return rented;
@@ -140,12 +141,39 @@ public class Library {
 
         System.out.println("Digite o nome da editora: ");
         String publisher = scanner.nextLine();
+        
+        System.out.println("Digite as categorias do livro (separadas por vírgula): ");
+        String categoriesInput = scanner.nextLine();
+        List<String> categoryNames = Arrays.asList(categoriesInput.split("\\s*,\\s*"));
+        List<Category> bookCategories = new ArrayList<>();
 
         LocalDate publishDate = InputHandler.getDateInput("Digite a data de publicação (formato AAAA-MM-DD): ");
         
         int quantity = InputHandler.getIntInput("Digite a quantidade de cópias do livro: ");
+        
+        for (String categoryName : categoryNames) {
+            categoryName = categoryName.trim();
+            Category foundCategory = findCategoryByName(categoryName);
 
-        return new Book(title, authors, status, isbn, publisher, publishDate, quantity);
+            if (foundCategory != null) {
+                bookCategories.add(foundCategory);
+            } else {
+                Category newCategory = new Category(categoryName);
+                existingCategories.add(newCategory);
+                bookCategories.add(newCategory);
+            }
+        }
+
+        return new Book(title, authors, status, isbn, publisher, bookCategories, publishDate, quantity);
+    }
+    
+    public Category findCategoryByName(String name) {
+        for (Category category : existingCategories) {
+            if (category.getName().equalsIgnoreCase(name)) {
+                return category;
+            }
+        }
+        return null;
     }
 	
 	public void registerUser(User user) {

@@ -3,11 +3,13 @@ package interfacesAndAbstracts;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
 import Entities.Book;
 import Entities.BookStatus;
+import Entities.Category;
 import Entities.Library;
 import Entities.User;
 
@@ -16,14 +18,20 @@ public abstract class LibraryHandler {
 
 	public LibraryHandler() {
 		super();
-		List<String> authors = new ArrayList<String>();
-		authors.add("Kauã");
-		authors.add("Levi");
-		authors.add("Bianka");
+		
+		List<String> authorsb1 = new ArrayList<>(Arrays.asList("Kauã Maia"));
+		List<String> authorsb2 = new ArrayList<>(Arrays.asList("Bianka Costa", "Matheus Costa"));
+		List<String> authorsb3 = new ArrayList<>(Arrays.asList("Levi Martins"));
+		
 		LocalDate localDate = new Date(System.currentTimeMillis()).toLocalDate();
-		Book newBook1 = new Book("Kauã", authors, BookStatus.DISPONIVEL, "isbn", "Kasoma", localDate, 2);
-		Book newBook2 = new Book("Levi", authors, BookStatus.DISPONIVEL, "isbn", "Lema", localDate, 2);
-		Book newBook3 = new Book("Bianka", authors, BookStatus.DISPONIVEL, "isbn", "Biesli", localDate, 2);
+		
+		List<Category> categoriesb1 = new ArrayList<>(Arrays.asList(new Category("Ficção"), new Category("Romance")));
+		List<Category> categoriesb2 = new ArrayList<>(Arrays.asList(new Category("Ficção")));
+		List<Category> categoriesb3 = new ArrayList<>(Arrays.asList(new Category("Horror")));
+		
+		Book newBook1 = new Book("O morro dos ventos uivantes", authorsb1, BookStatus.DISPONIVEL, "8594318235", "Kasoma", categoriesb1, localDate, 2);
+		Book newBook2 = new Book("O jardim secreto", authorsb2, BookStatus.DISPONIVEL, "6589678480", "Lema", categoriesb2, localDate, 2);
+		Book newBook3 = new Book("O médico e o monstro", authorsb3, BookStatus.DISPONIVEL, "isbn", "Biesli", categoriesb3, localDate, 2);
 		List<Book> books = new ArrayList<Book>();
 		books.add(newBook1);
 		books.add(newBook2);

@@ -10,9 +10,11 @@ public class Book extends BaseModel {
 	private BookStatus status;
 	private String isbn;
 	private String publisher;
+	private List<Category> category;
 	private LocalDate publishDate;
+	private Integer quantity;
 	
-	public Book(String title, List<String> author, BookStatus status, String isbn, String publisher,
+	public Book(String title, List<String> author, BookStatus status, String isbn, String publisher, List<Category> category,
 			LocalDate publishDate, Integer quantity) {
 		super();
 		this.title = title;
@@ -20,11 +22,10 @@ public class Book extends BaseModel {
 		this.status = status;
 		this.isbn = isbn;
 		this.publisher = publisher;
+		this.category = category;
 		this.publishDate = publishDate;
 		this.quantity = quantity;
 	}
-
-	private Integer quantity;
 
 	public void setTitle(String title) {
 		this.title = title;
@@ -40,6 +41,10 @@ public class Book extends BaseModel {
 
 	public void setPublisher(String publisher) {
 		this.publisher = publisher;
+	}
+	
+	public void setCategory(List<Category> category) {
+		this.category = category;
 	}
 
 	public void setPublishDate(LocalDate publishDate) {
@@ -72,6 +77,10 @@ public class Book extends BaseModel {
     public String getPublisher() {
         return publisher;
     }
+    
+    public List<Category> category() {
+        return category;
+    }
 
     public LocalDate getPublishDate() {
         return publishDate;
@@ -87,6 +96,7 @@ public class Book extends BaseModel {
                 "\tAutores: " + String.join(", ", author) + '\n' +
                 "\tIsbn: " + isbn + '\n' +
                 "\tEditora: " + publisher + '\n' +
+                "\tCategoria: " + showCategories(category) + '\n' +
                 "\tData de publicação: " + publishDate;
 	}
 	
@@ -95,6 +105,7 @@ public class Book extends BaseModel {
                 "\tAutores: " + String.join(", ", author) + '\n' +
                 "\tIsbn: " + isbn + '\n' +
                 "\tEditora: " + publisher + '\n' +
+                "\tCategoria: " + showCategories(category) + '\n' +
                 "\tData de publicação: " + publishDate;
 	}
 	
@@ -102,5 +113,20 @@ public class Book extends BaseModel {
 		return title + " | ID: " + this.getId();
 	}
 	
+	public String showCategories(List<Category> category) {
+	    StringBuilder categoriesString = new StringBuilder();
+	    
+	    if (category.isEmpty()) {
+	        categoriesString.append("Sem categorias");
+	    } else {
+	        for (Category cat : category) {
+	            if (categoriesString.length() > 0) {
+	                categoriesString.append(", ");
+	            }
+	            categoriesString.append(cat.getName());
+	        }
+	    }
+	    return categoriesString.toString();
+	}
 
 }
